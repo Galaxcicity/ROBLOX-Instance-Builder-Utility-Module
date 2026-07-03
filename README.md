@@ -7,26 +7,36 @@ A custom-made module originally built from scratch in less than 2 hours with les
 This is an easy and simple guide to teach you how to use this lightweight module of mine.
 
 new()
+
 Creates a new instance with the table of given properties
+
   param Object Name = string: The name of the Instance (Class Name, not to be confused with property 'Name') that you are creating.
   param Object Properties (Optional) = table: The given Object's properties that have an Index of the property's name and a Value of what you want to set the property to. (Optional due to minor cases where you may not want to or need to have properties for an Instance.)
+  
   param Style (Optional) = string: The "Style" you would like to give the object. It is extremely similar to the Properties table, but overrides it. Mainly to make it easier to make UI that have similar looks or general themes. Do NOT put a table for this, as it will be invalid. Instead use a string that's the same as a name for a Style you created using the "newStyle()" function.
+  
   param Behavior (Optional) = function( Instance ): This is mainly to account for those who put OOP first. Though it may be a bit difficult to understand, it is easy to use and quite useful. The main purpose is to make it possible to have replicated behavior for different instances without having to make way more functions in things like modules or local scripts in the memory than needed to support script behavior.
     all you need to do to make it work properly is make ONE parameter in the function that will be given as the Object created through this function itself and run the code through there as if it was its own script.
+
 
   EXAMPLE:
     instances.new( 'TextButton', { Name = 'TESTBUTTON', Parent = game:GetService('Players').LocalPlayer.PlayerGui.MainGUI, Text = 'Press me!' }, 'Round', function( Button ) Button.Activated:Connect(function() print('Hello World!') end) end ) -- Creates a new button with a 'Round' Style that, on clicked will print 'Hello World!'
      Note that Style being set to 'Round' is ONLY to show exactly HOW to use the parameter, it should not be used as a real value unless the case is that you have already created and registered a "Style" with that Name.
 
+
 newStyle()
+
 Registers a new 'Style' within a table inside of the module that cannot be tampered with directly, which can be used to make a Theme for things like UI, SFX, and more! This is similar to how CSS works, just a bit different!
+  
   param Style Name = string: The name of the Style. Can be anything! It's just important you remember this so you can actually use it later on! ^^
+  
   param Style Properties = table: The Style's Properties. This is similar to the 'Object Properties' parameter in the new() function, but will override those properties when this Style's name is set as the 'Style' parameter in the function
 
   EXAMPLE:
     instances.newStyle( 'Button', { BackgroundColor3 = Color3.new( .5, 0, .5 ), BackgroundTransparency = .5 } )
     instances.new( 'ImageButton', { Name = 'STYLESEXAMPLE', Parent = game:GetService('Players').LocalPlayer.PlayerGui.MainGUI, Image = 'rbxassetid://1234567890' }, 'Button' )
      This shows a better example of how exactly to use the Styles feature and how it can save quite a bit of time when making certain UI.
+
 
 instantiate()
 Arguably the most Complex, but important and useful part of this whole module
